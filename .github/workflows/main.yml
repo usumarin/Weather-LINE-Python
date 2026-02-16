@@ -1,0 +1,25 @@
+name: Daily Weather Line Notice
+
+on:
+  schedule:
+    # 毎日21:00（日本時間）に実行。UTCなので-9時間して12:00
+    - cron: '0 12 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: |
+          pip install requests python-dotenv
+      - name: Run script
+        env:
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
+          LUSER_CITY_CODE: ${{ secrets.USER_CITY_CODE }}
+        run: python main.py
