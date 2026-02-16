@@ -6,9 +6,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-LINE_TOKEN = os.environ.get("LINE_CHANNEL_ACCESS_TOKEN")
-USER_ID = os.environ.get("LINE_USER_ID")
-CITY_CODE = os.environ.get("USER_CITY_CODE")
+LINE_TOKEN = str(os.environ.get("LINE_CHANNEL_ACCESS_TOKEN", "")).strip()
+USER_ID = str(os.environ.get("LINE_USER_ID", "")).strip()
+CITY_CODE = str(os.environ.get("USER_CITY_CODE", "")).strip()
 
 # --- ゴミの日の設定（お住まいの地域に合わせて書き換えてください） ---
 GOMI_SCHEDULE = {
