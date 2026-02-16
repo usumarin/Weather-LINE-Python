@@ -26,9 +26,16 @@ def get_tomorrow_weather_and_gomi():
     """明日の天気・降水確率・ゴミの日情報をまとめて取得"""
     url = f"https://weather.tsukumijima.net/api/forecast/city/{CITY_CODE}"
 
+    # バグ特定用コード　開始
+    print(f"DEBUG_URL: {url}")
+    response = requests.get(url)
+    print(f"DEBUG_STATUS: {response.status_code}")
+    # バグ特定用コード　終了
+    """
     response = requests.get(url)
     if response.status_code != 200:
         return f"天気APIとの通信に失敗しました"
+    """
 
     data = response.json()
 
