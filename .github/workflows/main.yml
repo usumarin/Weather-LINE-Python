@@ -2,8 +2,8 @@ name: Daily Weather Line Notice
 
 on:
   schedule:
-    # 毎日21:00（日本時間）に実行。UTCなので-9時間して12:00
     - cron: '0 12 * * *'
+  workflow_dispatch: # ← これを追加！手動実行ボタンを出す設定です
 
 jobs:
   build:
