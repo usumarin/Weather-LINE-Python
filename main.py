@@ -38,6 +38,7 @@ def get_tomorrow_weather_and_gomi():
     # ここで telop を定義します
     telop = tomorrow.get("telop", "不明")
     date_label = tomorrow.get("dateLabel", "明日")
+    city_name = data.get("location", {}).get("city", "不明")
 
     # --- 2. 気温の取得（キーは小文字の 'celsius'） ---
     temp_data = tomorrow.get("temperature", {})
@@ -59,7 +60,7 @@ def get_tomorrow_weather_and_gomi():
 
     # --- 5. メッセージ組み立て ---
     msg = (
-        f"【{date_label}の準備】\n"
+        f"【{city_name}・{date_label}の準備】\n"
         f"☁️ 天気：{telop}\n"
         f"🌡 気温：{t_max}℃ / {t_min}℃\n"
         f"☔ 降水確率：{rain_text}\n\n"
